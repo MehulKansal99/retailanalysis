@@ -8,11 +8,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'apt install python3.9-venv'
+        sh 'sudo apt install python3-venv'
         sh 'python3 -m venv .venv'
         sh 'source .venv/bin/activate'
-        sh 'python3 -m pip install -user pipenv'
-        // sh 'pip3 install --user pipenv'
+        sh 'pip3 install --user pipenv'
         sh '/bitnami/jenkins/home/.local/bin/pipenv --rm || exit 0'
         sh '/bitnami/jenkins/home/.local/bin/pipenv install'
       }
